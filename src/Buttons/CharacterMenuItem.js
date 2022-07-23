@@ -10,14 +10,15 @@ const Button = styled.div`
 `;
 
 const ButtonOutline = styled(ButtonShell)`
-  top: 55vh;
+  top: 60vh;
 
   @media (max-width: 900px) {
-    top: 61vh;
+    top: 66vh;
   }
 
   @media (max-width: 600px) {
-    top: 57vh;
+    top: 62vh;
+    left: -12px;
   }
 `;
 
@@ -25,14 +26,15 @@ const StyledDragonIcon = styled(DragonIcon)`
   width: 47px;
   position: fixed;
   left: 33px;
-  top: 55.75vh;
+  top: 60.75vh;
 
   @media (max-width: 900px) {
-    top: 61.5vh;
+    top: 66.5vh;
   }
 
   @media (max-width: 600px) {
-    top: 57.75vh;
+    top: 62.75vh;
+    left: 21px;
   }
 `;
 

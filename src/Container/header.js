@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../Images/Logo";
 import ElfProfile from "../Images/ProfileImages/ElfProfile";
 import styled from "styled-components";
@@ -10,6 +10,7 @@ const Background = styled.div`
   text-align: center;
   position: sticky;
   top: 8px;
+  z-index: 3;
 
   @media (max-width: 600px) {
     width: 100vw;
@@ -64,21 +65,19 @@ const AvatarContainer = styled.div`
   }
 `;
 
-class Header extends React.Component {
-  state = { character: "Adventurer", avatar: undefined };
-  render() {
-    return (
-      <Background>
-        <Logo />
-        <CenterContainer>
-          <Welcome>Welcome {this.state.character}</Welcome>
-          <WelcomeMobile>{this.state.character}</WelcomeMobile>
-        </CenterContainer>
-        <AvatarContainer>
-          <ElfProfile height="95%" style={{ marginTop: "5px" }} />
-        </AvatarContainer>
-      </Background>
-    );
-  }
-}
+const Header = () => {
+  const [characterName] = useState("Adventurer");
+  return (
+    <Background>
+      <Logo />
+      <CenterContainer>
+        <Welcome>Welcome {characterName}</Welcome>
+        <WelcomeMobile>{characterName}</WelcomeMobile>
+      </CenterContainer>
+      <AvatarContainer>
+        <ElfProfile height="95%" style={{ marginTop: "5px" }} />
+      </AvatarContainer>
+    </Background>
+  );
+};
 export default Header;

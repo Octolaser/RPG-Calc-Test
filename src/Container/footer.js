@@ -28,19 +28,21 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-class Footer extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Text>
-          RPG Calculator is an independent project. Copyright 2022&#160;{" "}
-          <Link href="www.deloscreative.com" rel="noreferrer">
-            John Jurmu
-          </Link>
-        </Text>
-      </Container>
-    );
-  }
-}
+const Footer = () => {
+  return (
+    <Container>
+      <Text>
+        RPG Calculator is an independent project. Copyright 2022&#160;{" "}
+        <Link
+          href={"http://www.deloscreative.com/"}
+          rel={"noreferrer"}
+          target={"_blank"}
+        >
+          John Jurmu
+        </Link>
+      </Text>
+    </Container>
+  );
+};
 
 export default Footer;

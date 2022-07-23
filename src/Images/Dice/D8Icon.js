@@ -1,9 +1,9 @@
 import * as React from "react";
 
 const D8Icon = (props) => {
-  let color = "#3E1B6B";
+  let color = " #662d91";
   if (props.active) {
-    color = "#662d91";
+    color = "#3E1B6B";
   }
   if (props.button) {
     color = "none";

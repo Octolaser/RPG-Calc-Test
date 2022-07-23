@@ -21,16 +21,14 @@ const Container = styled.div`
   }
 `;
 
-class MainPlayContainer extends React.Component {
-  render() {
-    return (
-      <Container>
-        <GridBackground>
-          <DiceRoller />
-        </GridBackground>
-      </Container>
-    );
-  }
-}
+const MainPlayContainer = () => {
+  return (
+    <Container>
+      <GridBackground>
+        <DiceRoller />
+      </GridBackground>
+    </Container>
+  );
+};
 
 export default MainPlayContainer;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import D20 from "../Images/Dice/D20";
 import D12 from "../Images/Dice/D12";
+import D10 from "../Images/Dice/D10";
 import D8 from "../Images/Dice/D8";
 import D6 from "../Images/Dice/D6";
 import D4 from "../Images/Dice/D4";
@@ -21,6 +22,16 @@ const StyledD12 = styled(D12)`
   padding-bottom: 8px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  user-select: none;
+
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+const StyledD10 = styled(D10)`
+  margin-top: 55px;
+  height: 175px;
   user-select: none;
 
   :hover {
@@ -65,6 +76,9 @@ const DiceDisplay = ({ dice, rolled, onClick }) => {
   }
   if (dice === 12) {
     return <StyledD12 key={`DisplayDiceID${dice}`} onClick={onClick} />;
+  }
+  if (dice === 10) {
+    return <StyledD10 key={`DisplayDiceID${dice}`} onClick={onClick} />;
   }
   if (dice === 8) {
     return <StyledD8 key={`DisplayDiceID${dice}`} onClick={onClick} />;

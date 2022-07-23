@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import DiceRollResults from "../Logic/DiceRollResults";
+import diceRollResults from "../Logic/diceRollResults";
+import RollsTotalsDisplay from "./RollTotalsDisplay";
 import D4Icon from "../Images/Dice/D4Icon";
 import D6Icon from "../Images/Dice/D6Icon";
 import D8Icon from "../Images/Dice/D8Icon";
+import D10Icon from "../Images/Dice/D10Icon";
 import D12Icon from "../Images/Dice/D12Icon";
 import D20Icon from "../Images/Dice/D20Icon";
 
@@ -11,6 +13,7 @@ const Container = styled.div`
   width: 95%;
   margin: 0 auto;
   margin-top: 35px;
+  margin-bottom: 25px;
   background-color: #fff;
   border: 3px solid #662d91;
 
@@ -28,9 +31,18 @@ const CountContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 1100px) {
+    width: 68%;
+  }
+
+  @media (max-width: 900px) {
+    width: 80%;
+  }
+
   @media (max-width: 600px) {
     width: 80%;
     flex-flow: wrap;
+    margin-top: -8px;
   }
 `;
 
@@ -39,60 +51,63 @@ const DiceDisplay = styled.div`
   margin-bottom: 15px;
 `;
 
-const StyledD4 = styled(D4Icon)`
-  width: 50px;
-`;
-
-const StyledD6 = styled(D6Icon)`
-  width: 50px;
-`;
-
-const StyledD8 = styled(D8Icon)`
-  width: 50px;
-`;
-
-const StyledD12 = styled(D12Icon)`
-  width: 50px;
-`;
-
-const StyledD20 = styled(D20Icon)`
-  width: 50px;
-`;
-
 const Count = styled.p`
   margin-left: 10px;
 `;
 
-const RollInfoDisplay = (props) => {
+const RollInfoDisplay = () => {
+  const rollDisplay = [
+    {
+      dice: <D4Icon width={50} />,
+      rollNum: diceRollResults.D4,
+      id: 4,
+    },
+    {
+      dice: <D6Icon width={50} />,
+      rollNum: diceRollResults.D6,
+      id: 6,
+    },
+    {
+      dice: <D8Icon width={50} />,
+      rollNum: diceRollResults.D8,
+      id: 8,
+    },
+    {
+      dice: <D10Icon width={50} />,
+      rollNum: diceRollResults.D10,
+    },
+    {
+      dice: <D12Icon width={50} />,
+      rollNum: diceRollResults.D12,
+      id: 12,
+    },
+    {
+      dice: <D20Icon width={50} />,
+      rollNum: diceRollResults.D20,
+      id: 20,
+    },
+  ];
+
+  const rollCounterDisplay = rollDisplay.map(({ dice, rollNum, id }, index) => {
+    return (
+      <DiceDisplay key={id}>
+        {dice}
+        <Count key={index}>x {rollNum.length}</Count>
+      </DiceDisplay>
+    );
+  });
+
   return (
     <Container>
-      <p>Number of Rolls</p>
-      <CountContainer>
-        <DiceDisplay>
-          <StyledD4 active={"yes"} />
-          <Count>x {DiceRollResults.D4.length} </Count>
-        </DiceDisplay>
-        <DiceDisplay>
-          <StyledD6 active={"yes"} />
-          <Count>x {DiceRollResults.D6.length} </Count>
-        </DiceDisplay>
-        <DiceDisplay>
-          <StyledD8 active={"yes"} />
-          <Count>x {DiceRollResults.D8.length} </Count>
-        </DiceDisplay>
-        <DiceDisplay>
-          <StyledD12 active={"yes"} />
-          <Count>x {DiceRollResults.D12.length} </Count>
-        </DiceDisplay>
-        <DiceDisplay>
-          <StyledD20 />
-          <Count>x {DiceRollResults.D20.length} </Count>
-        </DiceDisplay>
-      </CountContainer>
+      <div>
+        <p>Number of Rolls</p>
+        <CountContainer>{rollCounterDisplay}</CountContainer>
+      </div>
+      <div style={{ paddingBottom: 25 }}>
+        <RollsTotalsDisplay />
+      </div>
     </Container>
   );
 };
-
-//<RoundButton onClick={props.onClick}>Clear</RoundButton>
 
 export default RollInfoDisplay;

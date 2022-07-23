@@ -10,21 +10,26 @@ const Button = styled.div`
 `;
 
 const ButtonOutline = styled(ButtonShell)`
-  top: 75vh;
+  top: 80vh;
+
+  @media (max-width: 600px) {
+    left: -12px;
+  }
 `;
 
 const DiceIcon = styled(D20Icon)`
   width: 35px;
   position: fixed;
   left: 40px;
-  top: 76.1vh;
+  top: 81.1vh;
 
   @media (max-width: 900px) {
-    top: 75.75vh;
+    top: 80.75vh;
   }
 
   @media (max-width: 600px) {
-    top: 76.05vh;
+    top: 81.05vh;
+    left: 28px;
   }
 `;
 
